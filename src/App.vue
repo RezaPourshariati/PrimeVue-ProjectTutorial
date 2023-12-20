@@ -21,8 +21,8 @@
   <br>
   <br>
   <br>
-  <div class="flex justify-content-center gap-4">
-    <Button label="Primary" class="btn"/>
+  <div class="flex justify-content-center gap-4 wow">
+    <Button label="Primary" class="bg-red-700"/>
     <Button label="Secondary" severity="secondary" raised/>
     <Button label="Success" severity="success" text/>
     <Button label="Info" severity="info" raised/>
@@ -184,7 +184,14 @@ p {
 }
 
 .btn {
-  @apply bg-green-500 p-3;
+  @apply bg-red-500 p-3;
 }
 
+.wow {
+  @apply bg-slate-500;
+}
+
+.bbb {
+  @apply bg-red-500;
+}
 </style>
