@@ -1,3 +1,5 @@
+/* @layer primevue, tailwind-base, tailwind-utilities; */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

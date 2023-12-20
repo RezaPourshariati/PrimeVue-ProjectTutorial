@@ -1,6 +1,7 @@
 import './assets/main.css';
 import { createApp } from 'vue';
 import App from './App.vue';
+import './index.css';
 import PrimeVue from "primevue/config";
 import InputText from "primevue/inputtext";
 import 'primeflex/primeflex.css';
@@ -17,5 +18,5 @@ app.component('Button', button);
 app.component('PickList', PickList);
 app.component("InputText", InputText);
 
-app.use(PrimeVue);
+app.use(PrimeVue, {styled: true});
 app.mount("#app");

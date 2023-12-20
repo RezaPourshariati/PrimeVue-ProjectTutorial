@@ -22,7 +22,7 @@
   <br>
   <br>
   <div class="flex justify-content-center gap-4">
-    <Button label="Primary"/>
+    <Button label="Primary" class="btn"/>
     <Button label="Secondary" severity="secondary" raised/>
     <Button label="Success" severity="success" text/>
     <Button label="Info" severity="info" raised/>
@@ -178,5 +178,13 @@
 </template>
 
 <style scoped>
+
+p {
+  @apply text-red-700;
+}
+
+.btn {
+  @apply bg-green-500 p-3;
+}
 
 </style>
