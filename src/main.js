@@ -1,6 +1,21 @@
-import './assets/main.css'
+import './assets/main.css';
+import { createApp } from 'vue';
+import App from './App.vue';
+import PrimeVue from "primevue/config";
+import InputText from "primevue/inputtext";
+import 'primeflex/primeflex.css';
+import button from 'primevue/button';
+import PickList from 'primevue/picklist';
+// import 'primeflex/themes/primeone-light.css';
+// import 'primeflex/themes/primeone-dark.css';
+import 'primevue/resources/themes/lara-light-green/theme.css';
 
-import { createApp } from 'vue'
-import App from './App.vue'
 
-createApp(App).mount('#app')
+const app = createApp(App);
+
+app.component('Button', button);
+app.component('PickList', PickList);
+app.component("InputText", InputText);
+
+app.use(PrimeVue);
+app.mount("#app");

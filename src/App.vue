@@ -1,47 +1,182 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+// import PrimeVue from './components/PrimeVue.vue';
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <h2>Hello world</h2>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+  <div class="flex">
+    <div class="flex-1 h-4rem bg-primary font-bold text-center p-4 border-round">1</div>
+    <div class="flex-1 h-4rem bg-primary font-bold text-center p-4 border-round mx-4">2</div>
+    <div class="flex-1 h-4rem bg-primary font-bold text-center p-4 border-round">3</div>
+  </div>
+
+  <div class="flex flex-column md:flex-row md:justify-content-between row-gap-3">
+    <Button type="button" label="Button 1"></Button>
+    <Button type="button" label="Button 2" severity="secondary"></Button>
+    <Button type="button" label="Button 3" severity="help"></Button>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="flex justify-content-center gap-4">
+    <Button label="Primary"/>
+    <Button label="Secondary" severity="secondary" raised/>
+    <Button label="Success" severity="success" text/>
+    <Button label="Info" severity="info" raised/>
+    <Button label="Warning" severity="warning" rounded/>
+    <Button label="Help" severity="help"/>
+    <Button label="Danger" severity="danger"/>
+  </div>
+  <div class="aaa flex justify--center">
+    <Button class="flex justify-center text-white">Cssslick Me</Button>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <PickList v-model="products" listStyle="height:342px" dataKey="id" breakpoint="1400px">
+    <template #sourceheader> Available</template>
+    <template #targetheader> Selected</template>
+    <template #item="slotProps">
+      <div class="flex flex-wrap p-2 align-items-center gap-3">
+        <img class="w-4rem shadow-2 flex-shrink-0 border-round"
+             :src="'https://primefaces.org/cdn/primevue/images/product/' + slotProps.item.image"
+             :alt="slotProps.item.name"/>
+        <div class="flex-1 flex flex-column gap-2">
+          <span class="font-bold">{{ slotProps.item.name }}</span>
+          <div class="flex align-items-center gap-2">
+            <i class="pi pi-tag text-sm"></i>
+            <span>{{ slotProps.item.category }}</span>
+          </div>
+        </div>
+        <span class="font-bold text-900">$ {{ slotProps.item.price }}</span>
+      </div>
+    </template>
+  </PickList>
+
+
+  <div class="line-height-3">
+    <div class="overflow-auto surface-overlay p-3 border-primary-500 border-2 border-round" style="height: 100px">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua.
+      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+      aute irure dolor in reprehenderit in voluptate velit
+      esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+      officia deserunt mollit anim id est laborum.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
     </div>
-  </header>
+  </div>
 
-  <main>
-    <TheWelcome />
-  </main>
+  <Button label="Click Me" @click="handleClick"/>
+
+
+  <div class="relative">
+    <h2>hello worldddd</h2>
+    <div class="static bg-primary-500 p-4 border-round text-gray-800" style="min-width: 300px; min-height: 150px;">
+      <p class="font-bold text-gray-900">Static</p>
+      <div class="absolute bottom-0 left-0 bg-primary border-round p-4 font-bold "
+           style="min-width: 120px; min-height: 70px">
+        Absolute
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-row flex-wrap">
+    <div class="flex align-items-center justify-content-center w-4rem h-4rem bg-primary font-bold border-round m-2">1
+    </div>
+    <div class="flex align-items-center justify-content-center w-4rem h-4rem bg-primary font-bold border-round m-2">2
+    </div>
+    <div class="flex align-items-center justify-content-center w-4rem h-4rem bg-primary font-bold border-round m-2">3
+    </div>
+  </div>
+
+  <div class="flex flex-column">
+    <div class="flex align-items-center justify-content-center h-4rem bg-primary font-bold border-round m-2">1</div>
+    <div class="flex align-items-center justify-content-center h-4rem bg-primary font-bold border-round m-2">2</div>
+    <div class="flex align-items-center justify-content-center h-4rem bg-primary font-bold border-round m-2">3</div>
+  </div>
+
+  <div class="flex flex-wrap" style="max-width: 500px">
+    <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round"
+         style="min-width: 200px; min-height: 100px">1
+    </div>
+    <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round"
+         style="min-width: 200px; min-height: 100px">2
+    </div>
+    <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round"
+         style="min-width: 200px; min-height: 100px">3
+    </div>
+  </div>
+
+
+  <div class="flex">
+    <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 px-5 py-3 border-round">Prime
+    </div>
+    <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 px-5 py-3 border-round">Prime
+      and PrimeFlex
+    </div>
+    <div class="flex align-items-center pt-3 justify-content-center bg-primary font-bold m-2 px-5 py-3 border-round">
+      Lorem ipsum dolor sit amet
+    </div>
+  </div>
+  <div class="flex">
+    <div class="flex-1 flex align-items-center justify-content-center bg-primary font-bold m-2 px-5 py-3 border-round">
+      Prime
+    </div>
+    <div class="flex-1 flex align-items-center justify-content-center bg-primary font-bold m-2 px-5 py-3 border-round">
+      Prime and PrimeFlex
+    </div>
+    <div class="flex-1 flex align-items-center justify-content-center bg-primary font-bold m-2 px-5 py-3 border-round">
+      Lorem ipsum dolor sit amet
+    </div>
+  </div>
+  <div class="field grid">
+    <label for="firstname3" class="col-fixed" style="width:100px">Firstname</label>
+    <div class="col">
+      <input id="firstname3" type="text"
+             class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+    </div>
+  </div>
+  <div class="field grid">
+    <label for="lastname3" class="col-fixed" style="width:100px">Lastname</label>
+    <div class="col">
+      <input id="lastname3" type="text"
+             class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+    </div>
+  </div>
+
+  <div class="flex flex-wrap justify-content-center">
+    <div class="border-round w-12rem h-6rem m-2 bg-primary font-bold flex align-items-center justify-content-center">
+      border-round
+    </div>
+    <div
+        class="border-round-left w-12rem h-6rem m-2 bg-primary font-bold flex align-items-center justify-content-center">
+      border-round-left
+    </div>
+  </div>
+  <div class="flex flex-wrap justify-content-center">
+    <div
+        class="border-round-top w-12rem h-6rem m-2 bg-primary font-bold flex align-items-center justify-content-center">
+      border-round-top
+    </div>
+    <div
+        class="border-round-bottom w-12rem h-6rem m-2 bg-primary font-bold flex align-items-center justify-content-center">
+      border-round-bottom
+    </div>
+    <div
+        class="border-round-right w-12rem h-6rem m-2 bg-primary font-bold flex align-items-center justify-content-center">
+      border-round-right
+    </div>
+  </div>
+  <p title="This is a paragraph">Paragraph text</p>
+  <p title="This is another paragraph">Another paragraph</p>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-}
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
