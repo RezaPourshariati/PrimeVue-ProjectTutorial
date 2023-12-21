@@ -1,5 +1,9 @@
-<script setup>
-// import PrimeVue from './components/PrimeVue.vue';
+<script setup lang="ts">
+
+import {ref} from "vue";
+
+const visible = ref(false);
+
 </script>
 
 <template>
@@ -22,7 +26,7 @@
   <br>
   <br>
   <div class="flex justify-content-center gap-4 wow">
-    <Button label="Primary" class="bg-red-700"/>
+    <Button label="Primary"/>
     <Button label="Secondary" severity="secondary" raised/>
     <Button label="Success" severity="success" text/>
     <Button label="Info" severity="info" raised/>
@@ -30,11 +34,46 @@
     <Button label="Help" severity="help"/>
     <Button label="Danger" severity="danger"/>
   </div>
-  <div class="aaa flex justify--center">
-    <Button class="flex justify-center text-white">Cssslick Me</Button>
+  <div class="none-component">
+    <h2 class="border-red-400">hello world</h2>
+  </div>
+  <div class="flex justify--center">
+    <Button class="flex justify-center text-white">Click Me</Button>
   </div>
   <br>
   <br>
+
+
+<!--  <div class="card flex justify-content-center">-->
+<!--    <Button label="Show" icon="pi pi-external-link" @click="visible = true"/>-->
+
+<!--    <Dialog v-model:visible="visible" modal header="Header" :pt="{-->
+<!--            root: { class: 'w-12 sm:w-9 md:w-6' }-->
+<!--    }">-->
+<!--      <p>-->
+<!--        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore-->
+<!--        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo-->
+<!--        consequat.-->
+<!--        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur-->
+<!--        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.-->
+<!--      </p>-->
+<!--    </Dialog>-->
+<!--  </div>-->
+  <div>
+    <div class="card flex justify-content-center">
+      <Button label="Show" icon="pi pi-external-link" @click="visible = true" />
+      <Dialog v-model:visible="visible" modal header="Header" :style="{ width: '50rem' }" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }" :pt="{
+                root: { class: 'w-12 sm:w-9 md:w-6' }
+            }">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </Dialog>
+    </div>
+  </div>
+
+
   <br>
   <br>
   <PickList v-model="products" listStyle="height:342px" dataKey="id" breakpoint="1400px">
@@ -179,19 +218,15 @@
 
 <style scoped>
 
-p {
-  @apply text-red-700;
-}
-
-.btn {
-  @apply bg-red-500 p-3;
+.aaa {
+  @apply bg-green-800 p-3;
 }
 
 .wow {
-  @apply bg-slate-500;
+  @apply bg-green-400;
 }
 
-.bbb {
-  @apply bg-red-500;
+.none-component {
+  @apply bg-yellow-300 rounded-2xl my-2 p-3 border-2 border-red-500;
 }
 </style>

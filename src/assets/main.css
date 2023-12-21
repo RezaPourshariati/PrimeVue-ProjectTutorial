@@ -1,5 +1,5 @@
 @import './base.css';
-@layer tailwind-base, primevue, tailwind-utilities;
+@layer primevue, tailwind-base, tailwind-utilities;
 
 @layer tailwind-base {
     @tailwind base;
