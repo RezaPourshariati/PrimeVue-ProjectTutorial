@@ -3,15 +3,15 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import './index.css';
 import PrimeVue from "primevue/config";
-import InputText from "primevue/inputtext";
+
 import 'primeflex/primeflex.css';
+
+import InputText from "primevue/inputtext";
 import button from 'primevue/button';
 import PickList from 'primevue/picklist';
 import Dialog from 'primevue/dialog';
 
 import Tailwind from 'primevue/passthrough/tailwind';
-// import 'primeflex/themes/primeone-light.css';
-// import 'primeflex/themes/primeone-dark.css';
 import 'primevue/resources/themes/lara-light-green/theme.css';
 import 'primeicons/primeicons.css'
 

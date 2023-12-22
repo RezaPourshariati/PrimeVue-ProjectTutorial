@@ -1,6 +1,6 @@
-<script setup lang="ts">
+<script setup>
 
-import {ref} from "vue";
+import { ref } from "vue";
 
 const visible = ref(false);
 
@@ -26,17 +26,21 @@ const visible = ref(false);
   <br>
   <br>
   <div class="flex justify-content-center gap-4 wow">
-    <Button label="Primary"/>
-    <Button label="Secondary" severity="secondary" raised/>
-    <Button label="Success" severity="success" text/>
-    <Button label="Info" severity="info" raised/>
-    <Button label="Warning" severity="warning" rounded/>
-    <Button label="Help" severity="help"/>
-    <Button label="Danger" severity="danger"/>
+    <Button label="Primary" />
+    <Button label="Secondary" severity="secondary" raised />
+    <Button label="Success" severity="success" text />
+    <Button label="Info" severity="info" raised />
+    <Button label="Warning" severity="warning" rounded />
+    <Button label="Help" severity="help" />
+    <Button label="Danger" severity="danger" />
   </div>
+
+
   <div class="none-component">
     <h2 class="border-red-400">hello world</h2>
   </div>
+
+
   <div class="flex justify--center">
     <Button class="flex justify-center text-white">Click Me</Button>
   </div>
@@ -44,30 +48,34 @@ const visible = ref(false);
   <br>
 
 
-<!--  <div class="card flex justify-content-center">-->
-<!--    <Button label="Show" icon="pi pi-external-link" @click="visible = true"/>-->
+  <!--  <div class="card flex justify-content-center">-->
+  <!--    <Button label="Show" icon="pi pi-external-link" @click="visible = true"/>-->
 
-<!--    <Dialog v-model:visible="visible" modal header="Header" :pt="{-->
-<!--            root: { class: 'w-12 sm:w-9 md:w-6' }-->
-<!--    }">-->
-<!--      <p>-->
-<!--        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore-->
-<!--        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo-->
-<!--        consequat.-->
-<!--        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur-->
-<!--        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.-->
-<!--      </p>-->
-<!--    </Dialog>-->
-<!--  </div>-->
+  <!--    <Dialog v-model:visible="visible" modal header="Header" :pt="{-->
+  <!--            root: { class: 'w-12 sm:w-9 md:w-6' }-->
+  <!--    }">-->
+  <!--      <p>-->
+  <!--        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore-->
+  <!--        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo-->
+  <!--        consequat.-->
+  <!--        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur-->
+  <!--        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.-->
+  <!--      </p>-->
+  <!--    </Dialog>-->
+  <!--  </div>-->
   <div>
-    <div class="card flex justify-content-center">
-      <Button label="Show" icon="pi pi-external-link" @click="visible = true" />
-      <Dialog v-model:visible="visible" modal header="Header" :style="{ width: '50rem' }" :breakpoints="{ '1199px': '75vw', '575px': '90vw' }" :pt="{
-                root: { class: 'w-12 sm:w-9 md:w-6' }
-            }">
+    <div class="dialog-card flex justify-center">
+      <Button class="p-8" label="Show" size="large" icon="pi pi-angle-double-right" @click="visible = true" :pt="{
+        icon: { class: 'bg-yellow-600 border-2 border-green-600 rounded-3xl' }
+      }"/>
+      <Dialog v-model:visible="visible" modal header="Header" :style="{ width: '50rem' }"
+        :breakpoints="{ '1199px': '75vw', '575px': '90vw' }" :pt="{ root: { class: 'w-12 sm:w-9 md:w-6' } }">
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat.
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+          sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </p>
       </Dialog>
     </div>
@@ -82,8 +90,8 @@ const visible = ref(false);
     <template #item="slotProps">
       <div class="flex flex-wrap p-2 align-items-center gap-3">
         <img class="w-4rem shadow-2 flex-shrink-0 border-round"
-             :src="'https://primefaces.org/cdn/primevue/images/product/' + slotProps.item.image"
-             :alt="slotProps.item.name"/>
+          :src="'https://primefaces.org/cdn/primevue/images/product/' + slotProps.item.image"
+          :alt="slotProps.item.name" />
         <div class="flex-1 flex flex-column gap-2">
           <span class="font-bold">{{ slotProps.item.name }}</span>
           <div class="flex align-items-center gap-2">
@@ -111,7 +119,7 @@ const visible = ref(false);
     </div>
   </div>
 
-  <Button label="Click Me" @click="handleClick"/>
+  <Button label="Click Me" @click="handleClick" />
 
 
   <div class="relative">
@@ -119,7 +127,7 @@ const visible = ref(false);
     <div class="static bg-primary-500 p-4 border-round text-gray-800" style="min-width: 300px; min-height: 150px;">
       <p class="font-bold text-gray-900">Static</p>
       <div class="absolute bottom-0 left-0 bg-primary border-round p-4 font-bold "
-           style="min-width: 120px; min-height: 70px">
+        style="min-width: 120px; min-height: 70px">
         Absolute
       </div>
     </div>
@@ -142,13 +150,13 @@ const visible = ref(false);
 
   <div class="flex flex-wrap" style="max-width: 500px">
     <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round"
-         style="min-width: 200px; min-height: 100px">1
+      style="min-width: 200px; min-height: 100px">1
     </div>
     <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round"
-         style="min-width: 200px; min-height: 100px">2
+      style="min-width: 200px; min-height: 100px">2
     </div>
     <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round"
-         style="min-width: 200px; min-height: 100px">3
+      style="min-width: 200px; min-height: 100px">3
     </div>
   </div>
 
@@ -178,14 +186,14 @@ const visible = ref(false);
     <label for="firstname3" class="col-fixed" style="width:100px">Firstname</label>
     <div class="col">
       <input id="firstname3" type="text"
-             class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
     </div>
   </div>
   <div class="field grid">
     <label for="lastname3" class="col-fixed" style="width:100px">Lastname</label>
     <div class="col">
       <input id="lastname3" type="text"
-             class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
     </div>
   </div>
 
@@ -193,22 +201,20 @@ const visible = ref(false);
     <div class="border-round w-12rem h-6rem m-2 bg-primary font-bold flex align-items-center justify-content-center">
       border-round
     </div>
-    <div
-        class="border-round-left w-12rem h-6rem m-2 bg-primary font-bold flex align-items-center justify-content-center">
+    <div class="border-round-left w-12rem h-6rem m-2 bg-primary font-bold flex align-items-center justify-content-center">
       border-round-left
     </div>
   </div>
   <div class="flex flex-wrap justify-content-center">
-    <div
-        class="border-round-top w-12rem h-6rem m-2 bg-primary font-bold flex align-items-center justify-content-center">
+    <div class="border-round-top w-12rem h-6rem m-2 bg-primary font-bold flex align-items-center justify-content-center">
       border-round-top
     </div>
     <div
-        class="border-round-bottom w-12rem h-6rem m-2 bg-primary font-bold flex align-items-center justify-content-center">
+      class="border-round-bottom w-12rem h-6rem m-2 bg-primary font-bold flex align-items-center justify-content-center">
       border-round-bottom
     </div>
     <div
-        class="border-round-right w-12rem h-6rem m-2 bg-primary font-bold flex align-items-center justify-content-center">
+      class="border-round-right w-12rem h-6rem m-2 bg-primary font-bold flex align-items-center justify-content-center">
       border-round-right
     </div>
   </div>
@@ -217,7 +223,6 @@ const visible = ref(false);
 </template>
 
 <style scoped>
-
 .aaa {
   @apply bg-green-800 p-3;
 }
@@ -227,6 +232,7 @@ const visible = ref(false);
 }
 
 .none-component {
-  @apply bg-yellow-300 rounded-2xl my-2 p-3 border-2 border-red-500;
+  @apply bg-yellow-300 font-bold text-green-600 rounded-2xl my-2 p-3 border-2 border-red-500;
 }
+
 </style>
