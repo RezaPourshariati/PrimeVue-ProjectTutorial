@@ -14,6 +14,7 @@ import Dialog from 'primevue/dialog';
 import Tailwind from 'primevue/passthrough/tailwind';
 import 'primevue/resources/themes/lara-light-green/theme.css';
 import 'primeicons/primeicons.css'
+import TieredMenu from 'primevue/tieredmenu';
 
 
 
@@ -23,6 +24,7 @@ app.component('Button', button);
 app.component('PickList', PickList);
 app.component("InputText", InputText);
 app.component("Dialog", Dialog);
+app.component("TieredMenu", TieredMenu);
 
 app.use(PrimeVue, {unstyled: false, pt: Tailwind});
 app.mount("#app");

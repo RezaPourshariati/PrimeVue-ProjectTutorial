@@ -1,15 +1,208 @@
-<script setup>
-
+<script setup lang="ts">
+import { onMounted } from "vue";
 import { ref } from "vue";
 
 const visible = ref(false);
+
+const items = ref([
+  {
+    label: 'File',
+    icon: 'pi pi-file',
+    items: [
+      {
+        label: 'New',
+        icon: 'pi pi-plus',
+        items: [
+          {
+            label: 'Document',
+            icon: 'pi pi-file'
+          },
+          {
+            label: 'Image',
+            icon: 'pi pi-image'
+          },
+          {
+            label: 'Video',
+            icon: 'pi pi-video'
+          }
+        ]
+      },
+      {
+        label: 'Open',
+        icon: 'pi pi-folder-open'
+      },
+      {
+        label: 'Print',
+        icon: 'pi pi-print'
+      }
+    ]
+  },
+  {
+    label: 'Edit',
+    icon: 'pi pi-file-edit',
+    items: [
+      {
+        label: 'Copy',
+        icon: 'pi pi-copy'
+      },
+      {
+        label: 'Delete',
+        icon: 'pi pi-times'
+      }
+    ]
+  },
+  {
+    label: 'Search',
+    icon: 'pi pi-search'
+  },
+  {
+    separator: true
+  },
+  {
+    label: 'Share',
+    icon: 'pi pi-share-alt',
+    items: [
+      {
+        label: 'Slack',
+        icon: 'pi pi-slack'
+      },
+      {
+        label: 'Whatsapp',
+        icon: 'pi pi-whatsapp'
+      }
+    ]
+  }
+]);
+
+// const selection = window.getSelection().toString().trim();
+// console.log(selection)
+
+// if (!selection) {
+//   const selectedText = selection.getSelectionText();
+//   console.log("Selected text:", selectedText);
+//   console.log(selection);
+// }
+
+// document.onmouseup = document.onkeyup = document.onselectionchange = () => {
+//   // Get the selected text
+//   let selection = window.getSelection();
+//   let selectedText = selection ? selection.toString().trim() : '';
+
+//   // If some text is selected
+//   if (selectedText) {
+//     // Log the selected text to the console
+//     console.log('Selected text: ', selectedText);
+//   }
+// };
+
+// onMounted(() => {
+//   const apple = document.getElementById('apple');
+//   const childElements = apple.childNodes;
+//   console.log(childElements)
+// })
+
+setTimeout(() => {
+  const apple = document.getElementById('apple');
+  const childElements = apple;
+  // console.log(childElements)
+
+  // childElements.forEach((node) => {
+  //   console.log(node.textContent)
+  // })
+  // console.log(childElements)
+}, 2000)
+
+// for (const childElement of childElements) {
+//   if (childElement.nodeType === 3) {
+//     console.log(childElement.textContent);
+//   }
+// }
+
+setTimeout(() => {
+  const myElement = document.querySelector(".myElement");
+  // console.log(myElement)
+  // myElement.forEach(node => console.log("this is for second example", node.childElements))
+}, 1000) // forEach method not working for querySelector() but it works with getElementById()
+
+// ----------------------------------------------------------------------------------------------------
+
+// Declare the variable at the top of your script
+
+
+setTimeout(() => {
+  // Declare the variable at the top of your script
+  let selected = ''
+  const selectableTextArea = document.querySelectorAll(".my-element");
+  selectableTextArea.forEach(element => {
+    element.addEventListener("mouseup", (event) => {
+      const selection = window.getSelection()
+      const selectedText = selection ? selection.toString().trim() : '';
+      console.log(selectedText)
+      selected = selectedText
+
+      // Get the PrimeVue component
+      
+
+      let tieredMenu = document.getElementById('tieredMenu') as HTMLElement;
+      // If some text is selected
+      if (selected.length && selection.rangeCount > 0) {
+        // Get the PrimeVue component
+
+        // Show the PrimeVue component
+        tieredMenu.style.display = 'block';
+        // Position the PrimeVue component near the selected text
+        let range = selection.getRangeAt(0);
+        let rect = range.getBoundingClientRect();
+        tieredMenu.style.left = `${rect.right}px`;
+        tieredMenu.style.top = `${rect.bottom}px`;
+      // } else {
+      //   // Hide the PrimeVue component
+      //   tieredMenu.style.display = 'none';
+      }
+    })
+  })
+  // Show the PrimeVue component when the mouse button is released
+
+  // document.addEventListener('mouseup', () => {
+  //   // Get the selected text
+  //   let selection = window.getSelection();
+  //   let selectedText = selection ? selection.toString().trim() : '';
+
+  //   // If some text is selected
+  // if (selectedText) {
+  //   // Get the PrimeVue component
+  //   tieredMenu = document.getElementById('tieredMenu');
+
+  //   // Show the PrimeVue component
+  //   tieredMenu!.style.display = 'block';
+
+  //   // Position the PrimeVue component near the selected text
+  //   let range = selection.getRangeAt(0);
+  //   let rect = range.getBoundingClientRect();
+  //   tieredMenu!.style.left = `${rect.right}px`;
+  //   tieredMenu!.style.top = `${rect.bottom}px`;
+  // }
+}, 200);
+
+// Hide the PrimeVue component when clicking outside of the selection
+// document.addEventListener('click', function (event: MouseEvent) {
+//   if (tieredMenu && event.target !== tieredMenu) {
+//     tieredMenu.style.display = 'none';
+//   }
+// });
+
+
+
+
+
 
 </script>
 
 <template>
   <h2>Hello world</h2>
+  <TieredMenu id="tieredMenu" :model="items" style="display: none; position: absolute; z-index: 4;" />
 
-  <div class="flex">
+  <div class="flex myElement" id="apple">
     <div class="flex-1 h-4rem bg-primary font-bold text-center p-4 border-round">1</div>
     <div class="flex-1 h-4rem bg-primary font-bold text-center p-4 border-round mx-4">2</div>
     <div class="flex-1 h-4rem bg-primary font-bold text-center p-4 border-round">3</div>
@@ -22,6 +215,10 @@ const visible = ref(false);
   </div>
   <br>
   <br>
+  <div class="my-element">
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Illo nobis nisi illum quibusdam dolores quidem nemo hic
+      pariatur atque similique.</p>
+  </div>
   <br>
   <br>
   <br>
@@ -67,7 +264,7 @@ const visible = ref(false);
     <div class="dialog-card flex justify-center">
       <Button class="p-8" label="Show" size="large" icon="pi pi-angle-double-right" @click="visible = true" :pt="{
         icon: { class: 'bg-yellow-600 border-2 border-green-600 rounded-3xl' }
-      }"/>
+      }" />
       <Dialog v-model:visible="visible" modal header="Header" :style="{ width: '50rem' }"
         :breakpoints="{ '1199px': '75vw', '575px': '90vw' }" :pt="{ root: { class: 'w-12 sm:w-9 md:w-6' } }">
         <p>
@@ -234,5 +431,4 @@ const visible = ref(false);
 .none-component {
   @apply bg-yellow-300 font-bold text-green-600 rounded-2xl my-2 p-3 border-2 border-red-500;
 }
-
 </style>
