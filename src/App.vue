@@ -7,7 +7,6 @@ const tiredMenuRef = ref();
 // -------------------------------------------------------------------------- ContextMenu
 
 const menu = ref();
-const text = ref();
 const myItems = ref([
   {label: 'Copy', icon: 'pi pi-copy'},
   {label: 'Rename', icon: 'pi pi-file-edit'},
@@ -245,7 +244,7 @@ setTimeout(() => {
       id="tieredMenu" :model="items" style="display: none; position: absolute; z-index: 4;"/>
 
   <div class="card">
-    <p @mouseup="onTextSelect" ref="text">Select some text from this paragraph.</p>
+    <p @mouseup="onTextSelect">Select some text from this paragraph.</p>
     <ContextMenu
         ref="menu"
         :model="myItems"
