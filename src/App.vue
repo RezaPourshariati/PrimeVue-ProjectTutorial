@@ -18,26 +18,35 @@ const myItems = ref([
   {label: 'Rename', icon: 'pi pi-file-edit'},
 ]);
 
+let lastSelection = '';
+
 const onTextSelect = (event) => {
-  const selection = window.getSelection().toString().trim();
+  const selection = window.getSelection().toString().trim() || '';
   if (selection && selection.toString().length > 0) {
-    console.log(selection)
-    contextMenuRef.value.show(event);
+    if (selection.toString() === lastSelection) {
+      window.getSelection().removeAllRanges();
+      lastSelection = '';
+    } else {
+      contextMenuRef.value.show(event);
+      lastSelection = selection.toString();
+    }
   }
-};
+}
 
 // const onClickOutside = (event) => {
-//   if (menu.value && !menu.value.contains(event.target) && !text.value.contains(event.target)) {
-//     menu.value.hide();
+//   if (contextMenuRef.value && !contextMenuRef.value.contains(event.target) && !contextMenuRef.value.contains(event.target)) {
+//     contextMenuRef.value.hide(event);
 //   }
 // }
 //
+//
+//
 // onMounted(() => {
-//   document.addEventListener('click', onClickOutside);
+//   document.addEventListener('mouseenter', onClickOutside);
 // });
 //
 // onUnmounted(() => {
-//   document.removeEventListener('click', onClickOutside);
+//   document.removeEventListener('mouseenter', onClickOutside);
 // });
 
 // -------------------------------------------------------------------------- End of Context Menu
