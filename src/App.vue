@@ -6,7 +6,7 @@ const tiredMenuRef = ref();
 
 // -------------------------------------------------------------------------- ContextMenu
 
-const menu = ref();
+const contextMenuRef = ref();
 const myItems = ref([
   {label: 'Copy', icon: 'pi pi-copy'},
   {label: 'Rename', icon: 'pi pi-file-edit'},
@@ -22,7 +22,7 @@ const onTextSelect = (event) => {
   const selection = window.getSelection().toString().trim();
   if (selection && selection.toString().length > 0) {
     console.log(selection)
-    menu.value.show(event);
+    contextMenuRef.value.show(event);
   }
 };
 
@@ -246,7 +246,7 @@ setTimeout(() => {
   <div class="card">
     <p @mouseup="onTextSelect">Select some text from this paragraph.</p>
     <ContextMenu
-        ref="menu"
+        ref="contextMenuRef"
         :model="myItems"
         :pt="{
             action: ({ props, state, context }) => ({
