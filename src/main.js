@@ -12,6 +12,7 @@ import PickList from 'primevue/picklist';
 import Dialog from 'primevue/dialog';
 import TieredMenu from 'primevue/tieredmenu';
 import ContextMenu from 'primevue/contextmenu';
+import MultiSelect from 'primevue/multiselect';
 
 
 import Tailwind from 'primevue/passthrough/tailwind';
@@ -28,6 +29,7 @@ app.component("InputText", InputText);
 app.component("Dialog", Dialog);
 app.component("TieredMenu", TieredMenu);
 app.component("ContextMenu", ContextMenu);
+app.component("MultiSelect", MultiSelect);
 
 app.use(PrimeVue, {unstyled: false, pt: Tailwind});
 app.mount("#app");
