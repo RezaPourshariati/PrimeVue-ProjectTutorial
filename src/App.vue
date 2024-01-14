@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import {ref, onMounted, onUnmounted} from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
+import PrimeVue from './components/PrimeVue.vue';
 
 const visible = ref(false);
 const tiredMenuRef = ref();
@@ -8,14 +9,14 @@ const tiredMenuRef = ref();
 
 const contextMenuRef = ref();
 const myItems = ref([
-  {label: 'Copy', icon: 'pi pi-copy'},
-  {label: 'Rename', icon: 'pi pi-file-edit'},
+  { label: 'Copy', icon: 'pi pi-copy' },
+  { label: 'Rename', icon: 'pi pi-file-edit' },
   {
     label: 'Rename', icon: 'pi pi-file-edit', items: [
-      {label: 'Rename', icon: 'pi pi-file-edit'}
+      { label: 'Rename', icon: 'pi pi-file-edit' }
     ]
   },
-  {label: 'Rename', icon: 'pi pi-file-edit'},
+  { label: 'Rename', icon: 'pi pi-file-edit' },
 ]);
 
 let lastSelection = '';
@@ -248,20 +249,15 @@ setTimeout(() => {
 
 <template>
   <h2>Hello world</h2>
-  <TieredMenu
-      ref="tiredMenuRef"
-      id="tieredMenu" :model="items" style="display: none; position: absolute; z-index: 4;"/>
+  <TieredMenu ref="tiredMenuRef" id="tieredMenu" :model="items" style="display: none; position: absolute; z-index: 4;" />
 
   <div class="card">
     <p @mouseup="onTextSelect">Select some text from this paragraph.</p>
-    <ContextMenu
-        ref="contextMenuRef"
-        :model="myItems"
-        :pt="{
-            action: ({ props, state, context }) => ({
-              class: context.active ? 'bg-blue-200 border-round-sm' : context.focused ? 'bg-blue-100 border-round-sm' : undefined,
-            }),
-    }"/>
+    <ContextMenu ref="contextMenuRef" :model="myItems" :pt="{
+      action: ({ props, state, context }) => ({
+        class: context.active ? 'bg-blue-200 border-round-sm' : context.focused ? 'bg-blue-100 border-round-sm' : undefined,
+      }),
+    }" />
   </div>
   <div class="flex myElement" id="apple">
     <div class="flex-1 h-4rem bg-primary font-bold text-center p-4 border-round">1</div>
@@ -284,19 +280,26 @@ setTimeout(() => {
   <br>
   <br>
   <div class="flex justify-content-center gap-4 wow">
-    <Button label="Primary"/>
-    <Button label="Secondary" severity="secondary" raised/>
-    <Button label="Success" severity="success" text/>
-    <Button label="Info" severity="info" raised/>
-    <Button label="Warning" severity="warning" rounded/>
-    <Button label="Help" severity="help"/>
-    <Button label="Danger" severity="danger"/>
+    <Button label="Primary" />
+    <Button label="Secondary" severity="secondary" raised />
+    <Button label="Success" severity="success" text />
+    <Button label="Info" severity="info" raised />
+    <Button label="Warning" severity="warning" rounded />
+    <Button label="Help" severity="help" />
+    <Button label="Danger" severity="danger" />
   </div>
 
 
   <div class="none-component">
     <h2 class="border-red-400">hello world</h2>
   </div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <PrimeVue />
 
 
   <div class="flex justify--center">
@@ -325,9 +328,9 @@ setTimeout(() => {
     <div class="dialog-card flex justify-center">
       <Button class="p-8" label="Show" size="large" icon="pi pi-angle-double-right" @click="visible = true" :pt="{
         icon: { class: 'bg-yellow-600 border-2 border-green-600 rounded-3xl' }
-      }"/>
+      }" />
       <Dialog v-model:visible="visible" modal header="Header" :style="{ width: '50rem' }"
-              :breakpoints="{ '1199px': '75vw', '575px': '90vw' }" :pt="{ root: { class: 'w-12 sm:w-9 md:w-6' } }">
+        :breakpoints="{ '1199px': '75vw', '575px': '90vw' }" :pt="{ root: { class: 'w-12 sm:w-9 md:w-6' } }">
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -339,30 +342,6 @@ setTimeout(() => {
       </Dialog>
     </div>
   </div>
-
-
-  <br>
-  <br>
-  <PickList v-model="products" listStyle="height:342px" dataKey="id" breakpoint="1400px">
-    <template #sourceheader> Available</template>
-    <template #targetheader> Selected</template>
-    <template #item="slotProps">
-      <div class="flex flex-wrap p-2 align-items-center gap-3">
-        <img class="w-4rem shadow-2 flex-shrink-0 border-round"
-             :src="'https://primefaces.org/cdn/primevue/images/product/' + slotProps.item.image"
-             :alt="slotProps.item.name"/>
-        <div class="flex-1 flex flex-column gap-2">
-          <span class="font-bold">{{ slotProps.item.name }}</span>
-          <div class="flex align-items-center gap-2">
-            <i class="pi pi-tag text-sm"></i>
-            <span>{{ slotProps.item.category }}</span>
-          </div>
-        </div>
-        <span class="font-bold text-900">$ {{ slotProps.item.price }}</span>
-      </div>
-    </template>
-  </PickList>
-
 
   <div class="line-height-3">
     <div class="overflow-auto surface-overlay p-3 border-primary-500 border-2 border-round" style="height: 100px">
@@ -378,15 +357,13 @@ setTimeout(() => {
     </div>
   </div>
 
-  <Button label="Click Me" @click="handleClick"/>
-
 
   <div class="relative">
     <h2>hello worldddd</h2>
     <div class="static bg-primary-500 p-4 border-round text-gray-800" style="min-width: 300px; min-height: 150px;">
       <p class="font-bold text-gray-900">Static</p>
       <div class="absolute bottom-0 left-0 bg-primary border-round p-4 font-bold "
-           style="min-width: 120px; min-height: 70px">
+        style="min-width: 120px; min-height: 70px">
         Absolute
       </div>
     </div>
@@ -409,13 +386,13 @@ setTimeout(() => {
 
   <div class="flex flex-wrap" style="max-width: 500px">
     <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round"
-         style="min-width: 200px; min-height: 100px">1
+      style="min-width: 200px; min-height: 100px">1
     </div>
     <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round"
-         style="min-width: 200px; min-height: 100px">2
+      style="min-width: 200px; min-height: 100px">2
     </div>
     <div class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round"
-         style="min-width: 200px; min-height: 100px">3
+      style="min-width: 200px; min-height: 100px">3
     </div>
   </div>
 
@@ -445,14 +422,14 @@ setTimeout(() => {
     <label for="firstname3" class="col-fixed" style="width:100px">Firstname</label>
     <div class="col">
       <input id="firstname3" type="text"
-             class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
     </div>
   </div>
   <div class="field grid">
     <label for="lastname3" class="col-fixed" style="width:100px">Lastname</label>
     <div class="col">
       <input id="lastname3" type="text"
-             class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
+        class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary">
     </div>
   </div>
 
@@ -460,22 +437,20 @@ setTimeout(() => {
     <div class="border-round w-12rem h-6rem m-2 bg-primary font-bold flex align-items-center justify-content-center">
       border-round
     </div>
-    <div
-        class="border-round-left w-12rem h-6rem m-2 bg-primary font-bold flex align-items-center justify-content-center">
+    <div class="border-round-left w-12rem h-6rem m-2 bg-primary font-bold flex align-items-center justify-content-center">
       border-round-left
     </div>
   </div>
   <div class="flex flex-wrap justify-content-center">
-    <div
-        class="border-round-top w-12rem h-6rem m-2 bg-primary font-bold flex align-items-center justify-content-center">
+    <div class="border-round-top w-12rem h-6rem m-2 bg-primary font-bold flex align-items-center justify-content-center">
       border-round-top
     </div>
     <div
-        class="border-round-bottom w-12rem h-6rem m-2 bg-primary font-bold flex align-items-center justify-content-center">
+      class="border-round-bottom w-12rem h-6rem m-2 bg-primary font-bold flex align-items-center justify-content-center">
       border-round-bottom
     </div>
     <div
-        class="border-round-right w-12rem h-6rem m-2 bg-primary font-bold flex align-items-center justify-content-center">
+      class="border-round-right w-12rem h-6rem m-2 bg-primary font-bold flex align-items-center justify-content-center">
       border-round-right
     </div>
   </div>
