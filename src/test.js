@@ -147,7 +147,7 @@ console.log(result);
 
 
 
-// items.sort((a, b) => a.bookTitle.localeCompare(b.bookTitle));
-//
-// // Now, data is sorted by 'bookTitle'
-// console.log(items);
+items.sort((a, b) => a.bookTitle.localeCompare(b.bookTitle));
+
+// Now, data is sorted by 'bookTitle'
+console.log(items);
